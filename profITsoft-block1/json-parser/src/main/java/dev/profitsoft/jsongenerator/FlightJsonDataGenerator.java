@@ -12,10 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static dev.profitsoft.entity.Flight.AVAILABLE_SERVICES;
@@ -43,10 +40,16 @@ public class FlightJsonDataGenerator {
     private static final String DATA_FILE_EXTENSION = ".json";
 
     /**
+     * The minimum number of services that a flight can have.
+     */
+    public static final int MIN_SERVICES_COUNT = 2;
+
+    /**
      * The {@link Faker} object used to generate random data.
      * <p>It is initialized with the English locale.</p>
      */
     private final static Faker faker = new Faker(new Locale("en"));
+
 
     /**
      * The {@link ObjectMapper} object used to write JSON data.
@@ -123,7 +126,13 @@ public class FlightJsonDataGenerator {
      * @see Flight
      */
     private static Flight generateRandomFlight() {
-        return new Flight(faker.regexify("[A-Z]{2}[0-9]{3}"), faker.regexify("[A-Z]{3}"), faker.regexify("[A-Z]{3}"), LocalDateTime.now().plusMinutes(faker.number().numberBetween(1, 1000)), LocalDateTime.now().plusMinutes(faker.number().numberBetween(1001, 2000)), getRandomFlightServices());
+        return new Flight(
+                faker.regexify("[A-Z]{2}[0-9]{3}"),
+                faker.regexify("[A-Z]{3}"),
+                faker.regexify("[A-Z]{3}"),
+                LocalDateTime.now().plusMinutes(faker.number().numberBetween(1, 1000)),
+                LocalDateTime.now().plusMinutes(faker.number().numberBetween(1001, 2000)),
+                getRandomFlightServices());
     }
 
     /**
@@ -135,11 +144,20 @@ public class FlightJsonDataGenerator {
     private static String getRandomFlightServices() {
         List<String> services = new ArrayList<>(AVAILABLE_SERVICES);
         Collections.shuffle(services);
-        return String.join(", ", AVAILABLE_SERVICES.subList(0, faker.number().numberBetween(2, AVAILABLE_SERVICES.size())));
+
+        int servicesCount = faker.number().numberBetween(MIN_SERVICES_COUNT, services.size());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < servicesCount; i++) {
+            sb.append(services.get(i));
+            if (i < servicesCount - 1) {
+                sb.append(",");
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         FlightJsonDataGenerator generator = new FlightJsonDataGenerator();
-        generator.generateFilesWithFlights(5, 10);
+        generator.generateFilesWithFlights(10, 10_000);
     }
 }
