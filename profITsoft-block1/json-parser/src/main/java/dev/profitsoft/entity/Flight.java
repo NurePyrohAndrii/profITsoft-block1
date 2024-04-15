@@ -6,6 +6,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Representing of a flight entity.
+ */
 @Data
 @AllArgsConstructor
 public class Flight {
@@ -17,6 +20,9 @@ public class Flight {
     private LocalDateTime arrivalTime;
     private String services;
 
+    /**
+     * List of available services on a flight.
+     */
     public static final List<String> AVAILABLE_SERVICES = List.of(
             "Business Class",
             "Economy Class",

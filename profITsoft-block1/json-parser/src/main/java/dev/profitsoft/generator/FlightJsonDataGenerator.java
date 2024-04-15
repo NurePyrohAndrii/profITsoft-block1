@@ -1,4 +1,4 @@
-package dev.profitsoft.jsongenerator;
+package dev.profitsoft.generator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -156,8 +156,4 @@ public class FlightJsonDataGenerator {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        FlightJsonDataGenerator generator = new FlightJsonDataGenerator();
-        generator.generateFilesWithFlights(10, 10_000);
-    }
 }
