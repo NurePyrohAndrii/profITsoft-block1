@@ -57,10 +57,10 @@ public class FlightDataParser {
     /**
      * Constructor, configures the parser with the necessary parameters
      *
-     * @param dirPath       path to the directory containing JSON files
+     * @param dirPath         path to the directory containing JSON files
      * @param numberOfThreads number of threads to use for processing files
-     * @param attribute     attribute to extract from JSON objects
-     * @param valueConsumer consumer to process extracted attribute values
+     * @param attribute       attribute to extract from JSON objects
+     * @param valueConsumer   consumer to process extracted attribute values
      */
     public FlightDataParser(String dirPath, int numberOfThreads, String attribute, Consumer<String> valueConsumer) {
         this.directory = Paths.get(dirPath);
@@ -119,7 +119,7 @@ public class FlightDataParser {
      * @param file path to the JSON file
      * @throws IOException if an I/O error occurs
      */
-    private void processFile(Path file) throws IOException {
+    void processFile(Path file) throws IOException {
         try (
                 BufferedReader reader = Files.newBufferedReader(file);
                 JsonParser parser = factory.createParser(reader)

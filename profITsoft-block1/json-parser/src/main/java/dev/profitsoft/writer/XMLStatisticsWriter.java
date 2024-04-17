@@ -88,7 +88,7 @@ public class XMLStatisticsWriter {
      * @param attribute attribute to group statistics by
      * @return path to the output file
      */
-    private File getOutputFile(String attribute) {
+    File getOutputFile(String attribute) {
         return new File(STATISTICS_LOCATION.resolve("statistics_by_" + attribute + ".xml").toString());
     }
 
