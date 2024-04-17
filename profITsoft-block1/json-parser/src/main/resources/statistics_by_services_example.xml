@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Statistics>
+    <item>
+        <item>
+            <value>Economy Class</value>
+            <count>3944</count>
+        </item>
+        <item>
+            <value>Premium Economy</value>
+            <count>3903</count>
+        </item>
+        <item>
+            <value>Extra Legroom</value>
+            <count>3897</count>
+        </item>
+        <item>
+            <value>Entertainment</value>
+            <count>3894</count>
+        </item>
+        <item>
+            <value>Priority Boarding</value>
+            <count>3879</count>
+        </item>
+        <item>
+            <value>First Class</value>
+            <count>3850</count>
+        </item>
+        <item>
+            <value>Wi-Fi</value>
+            <count>3844</count>
+        </item>
+        <item>
+            <value>Business Class</value>
+            <count>3829</count>
+        </item>
+        <item>
+            <value>Meals</value>
+            <count>3827</count>
+        </item>
+        <item>
+            <value>In-flight Shopping</value>
+            <count>3797</count>
+        </item>
+    </item>
+</Statistics>
