@@ -90,7 +90,6 @@ public class FlightDataParser {
     private void listJsonFiles() throws IOException {
         try (Stream<Path> stream = Files.walk(directory)) {
             List<Path> files = stream.filter(path -> path.toString().endsWith(".json")).toList();
-            System.out.println("Found " + files.size() + " JSON files");
             fileQueue.addAll(files);
         }
     }
@@ -132,7 +131,6 @@ public class FlightDataParser {
                     processJsonObject(parser);
                 }
             }
-            System.out.println("Processed file: " + file.getFileName());
         }
     }
 
