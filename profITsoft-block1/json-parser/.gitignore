@@ -35,4 +35,4 @@ build/
 .DS_Store
 
 ### Generated ###
-src/main/resources/data/
+# src/main/resources/data/
